@@ -3,9 +3,12 @@
     "name": "Wokoo Floating Ball",  
     "version": "1.0",  
     "description": "A browser extension that adds a customizable floating ball with dynamic content.",  
-    "permissions": ["contextMenus", "storage"],  
+    "permissions": ["contextMenus", "storage", "tabs", "scripting"],  
+    "host_permissions": [
+        "<all_urls>"
+    ],
     "action": {  
-      "default_popup": "popup.html",  
+      "default_popup": "popup/index.html",  
       "default_icon": {  
         "16": "icons/icon16.png",  
         "48": "icons/icon48.png",  
@@ -27,8 +30,9 @@
         "css": ["content_style.css"]  
       }  
     ],  
-    "web_accessible_resources": [  
-      "images/*"  
-    ],  
-    "options_page": "options.html"  // 可选：提供一个选项页面让用户配置插件  
+    "web_accessible_resources": [{ 
+      "resources": ["images/*", "scripts/*"],
+      "matches": ["<all_urls>"]
+    }],
+    "options_page": "popup/index.html"  // 可选：提供一个选项页面让用户配置插件  
   }
